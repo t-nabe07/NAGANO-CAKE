@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  #Customer側のルーティング
+#Customer側のルーティング
   root 'homes#top'
   get 'about' => 'homes#about'
   resources :items, only: [:index, :show]
