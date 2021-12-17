@@ -37,8 +37,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :customers, except: [:new, :create, :destroy]
-    resources :orders, only: [:index, :show, :update, :index_customer]
-    put 'admin/orders_details/:id', to: 'order_details#update'
+    resources :orders, only: [:index, :show, :update]
+    patch 'orders_details/:id', to: 'order_details#update'
   end
  
 end
