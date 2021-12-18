@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
- 
+
   def edit
   end
 
@@ -14,5 +14,5 @@ class CustomersController < ApplicationController
 
   def unsubscribe #退会画面表示
   end
-  
+
 end
