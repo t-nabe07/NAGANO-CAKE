@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_12_17_070231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
-    t.string "first_name_kana"
     t.string "first_name"
     t.string "last_name_kana"
     t.string "postcode"
