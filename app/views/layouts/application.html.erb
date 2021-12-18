@@ -10,10 +10,15 @@
   </head>
 
   <body>
-    <%# deivseのフラッシュメッセージを表示 %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!--header-->
+    <%= render "layouts/header" %>
+
+   
 
     <%= yield %>
+
+    <!--footer-->
+    <footer>
+    </footer>
   </body>
 </html>
