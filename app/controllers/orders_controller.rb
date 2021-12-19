@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
+    
   end
 
   def create
@@ -16,6 +17,12 @@ class OrdersController < ApplicationController
   end
 
   def thanx
+  end
+
+  private
+
+  def order_params
+    params.requier(:order).permit(:payment_method)
   end
 
 
