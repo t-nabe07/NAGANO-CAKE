@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <h3 class = "u">会員一覧</h3>
+    <table class="table table-hover table-inverse">
+      <thead>
+       <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+       </tr>
+      </thead>
+      <tbody>
+       <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><u><%= link_to customer.full_name, admin_customer_path(customer.id), class: "text-dark" %></u></td>
+          <td><%= customer.email %></td>
+          <% if customer.is_deleted_i18n == "有効" %>
+            <td class="text-success"><%= customer.is_deleted_i18n %></td>
+          <% else %>
+            <td class="text-secondary"><%= customer.is_deleted_i18n %></td>
+          <% end %>
+        </tr>
+       <% end %>
+      </tbody>
+    </table>
+    <div class="mx-auto">
+      <%= paginate @customers %>
+    </div>
+  </div>
+</div>
