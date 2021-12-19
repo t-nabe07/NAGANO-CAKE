@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-12">
+      <h2 class="col-xs-offset-1"><%= @customer.full_name %>さんの会員詳細</h2>
+        <table>
+        　<!--会員情報詳細-->
+          <tbody class="table">
+             <!--会員ID-->
+             <tr>
+               <td>会員ID</td>
+               <td><%= @customer.id %></td>
+　           </tr>
+　           <!--氏名-->
+　           <tr>
+　             <td>氏名</td>
+　             <td><%= @customer.show_full_name %></td>
+　           </tr>
+　           <!--フリガナ-->
+　           <tr>
+　             <td>フリガナ</td>
+　             <td><%= @customer.full_name_kana %></td>
+    　        </tr>
+            　<!--郵便番号-->
+　           <tr>
+　             <td>郵便番号</td>
+　             <td><%= @customer.postcode %></td>
+             </tr>
+             <!--住所-->
+　           <tr>
+　             <td>住所</td>
+　             <td><%= @customer.address %></td>
+　           </tr>
+　           <!--電話番号-->
+           　<tr>
+　             <td>電話番号</td>
+　             <td><%= @customer.phone_num %></td>
+　           </tr>
+　           <!--メールアドレス-->
+　           <tr>
+               <td>メールアドレス</td>
+               <td><%= @customer.email %></td>
+             </tr>
+             <!--会員ステータス-->
+             <tr>
+               <td>会員ステータス</td>
+                 <% if @customer.is_deleted_i18n == "有効" %>
+                   <td class="text-success"><%= @customer.is_deleted_i18n %></td>
+                 <% else %>
+                   <td class="text-secondary"><%= @customer.is_deleted_i18n %></td>
+                 <% end %>
+               </tr>
+            </tbody>
+         </table>
+      <!--ボタン-->
+      <%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-success' %>
+      <%= link_to "注文履歴一覧を見る", admin_orders_path, class: 'btn  btn-primary' %>
+    </div>
+</div>
+</div>
+
+
+
