@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_18_125208) do
+
+ActiveRecord::Schema.define(version: 2021_12_19_031614) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "postcode"
+    t.string "address"
+    t.string "name"
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -73,11 +79,27 @@ ActiveRecord::Schema.define(version: 2021_12_18_125208) do
   create_table "order_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "order_id"
+    t.integer "quantity"
+    t.integer "making_status"
+    t.integer "price"
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "postcode"
+    t.string "address"
+    t.string "name"
+    t.integer "payment_method"
+    t.integer "shipping_cost"
+    t.integer "total_payment"
+    t.integer "status"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
 end
