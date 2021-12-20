@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
-    
+    @address = Address.all
   end
 
   def create
+    @order.find(params[])
   end
 
   def index
@@ -14,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    o
   end
 
   def thanx
