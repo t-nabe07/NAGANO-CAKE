@@ -16,23 +16,22 @@
 <h2>お届け先</h2>
 <%= form_with model: @order,local:true do |f| %>
 <div>
-<%= f.radio_button :payment_method, "tfer" %>
-<%= f.label :payment_method, "ご自身の住所" %>
+<%= f.radio_button :select_addres, "" %>
+<%= f.label :select_addres, "ご自身の住所" %>
+<%= current_customer.postcode %>
+<%= current_customer.address %>
+<%= current_customer.last_name %>
 </div>
 
 <div>
-<%= f.radio_button :payment_method, "transfer" %>
-<%= f.label :payment_method, "登録住所から選択" %>
+<%= f.radio_button :select_addres, "transfer" %>
+<%= f.label :select_addres, "登録住所から選択" %>
 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
-<select name="order[address_id]" id="order_address_id">
-<option value= "1">配送先1</option>
-<option value= "2">配送先2</option>
-</select>
 </div>
 
 <div>
-<%= f.radio_button :payment_method, "transfer" %>
-<%= f.label :payment_method, "新しいお届け先" %> </br>
+<%= f.radio_button :select_addres, "transfer" %>
+<%= f.label :select_addres, "新しいお届け先" %> </br>
 郵便番号(ハイフンなし)
 <%= f.text_field :postcode %></br>
 住所
@@ -40,6 +39,8 @@
 宛名
 <%= f.text_field :name %>
 </div>
+<%= f.submit '確認画面へ進む' %>
 <% end %>
 
-確認画面へ進む
+
+

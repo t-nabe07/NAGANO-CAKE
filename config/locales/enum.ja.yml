@@ -4,3 +4,10 @@ ja:
         is_deleted:
           withdraw: "退会"
           active: "有効"
+
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
