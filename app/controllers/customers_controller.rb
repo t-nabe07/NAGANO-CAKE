@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
 
   def withdraw #退会処理
     # = current_customerでも作動するはずもしくはshowと揃える。defult:falseないので実行未確認
-    @customer = Customer.find_by(email: params[:customer][:email])
+    @customer = current_customer
     #is_deletedカラムをtrueに変更することで論理削除フラグを立てる
     @customer.update(is_deleted: true)
     #セッション情報を全て削除
