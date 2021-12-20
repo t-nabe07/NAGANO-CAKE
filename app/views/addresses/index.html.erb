@@ -15,21 +15,19 @@
 </div>
 <% end %>
 
-<table>
-  <tr>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>宛名</th>
-  </tr>
-<tbody>
-  <tr>
+<table class="table">
+  <thead>
+    <td>郵便番号</td>
+    <td>住所</td>
+    <td>宛名</td>
+  </thead>
+  <tbody>
     <% @addresses.each do |address| %>
-      <td><%= address.postcode %></td>
-      <td><%= address.address %></td>
-      <td><%= address.name %></td>
+      <tr>
+        <td><%= address.postcode %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+      </tr>
     <% end %>
-  </tr>
-</tbody>
-
-
+  </tbody>
 </table>
