@@ -2,7 +2,7 @@
  <!--form_with部分-->
  <%= form_with model:@genre, url:admin_genres_path, local:true do |f| %>
   <table>
-    <tr>
+    <tr arign="center">
       <th>
         <p>ジャンル名</p>
         <th><%= f.text_field :name, placeholder: "ジャンル名" %></th>
