@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   #devise情報をパスワードなしで更新できるメソッド
   def update_without_current_password(params, *options)
     params.delete(:current_password)
@@ -22,5 +23,25 @@ class Customer < ApplicationRecord
   #def active_for_authentication?
     #super && (is_deleted == false)
   #end
+
+
+  # enumの設定
+  enum is_deleted: { withdraw: true, active: false}
+  
+  # フルネーム（nilの場合を除く）
+  def full_name
+    self.last_name + self.first_name
+  end
+
+  # フルネーム（姓名の間にスペースあり）（nilの場合を除く）
+  def show_full_name
+    self.last_name + " " + self.first_name
+  end 
+  
+  # フルネームカナ（nilの場合を除く）
+  def full_name_kana
+    self.last_name_kana + " " + self.last_name_kana
+  end 
+  
 
 end
