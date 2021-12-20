@@ -1,2 +1,50 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h3>商品編集</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <%= form_with model:@item, url:admin_item_path(@item), local:true do |f| %>
+        <table>
+         <tbody>
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :name, placeholder: "商品名", size: "40x1" %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "40x6 " %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+          </tr>
+          <tr>
+            <td>税抜価格</td>
+            <td><%= f.text_area :price, placeholder: "1000", size: "40x1" %></td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, '販売中', value: true %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, '販売停止中', value: false %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+          </tr>
+         </tbody>
+        
+        </table>
+        
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
