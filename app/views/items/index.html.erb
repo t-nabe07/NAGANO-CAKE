@@ -1,24 +1,27 @@
-<div class="container">
+<div class="containor">
   <div class="row">
-   <div class="col-lg-2">
-      <table>
-        <tr>ジャンル検索</tr>
-      </table>
-   </div>
-
-   <div class="col-lg-10">
-    <h3>商品一覧</h3>
-    <table>
-     <tr>
+    <div class="col-lg-2">
+      <h3>ジャンル検索</h3>
+    </div>
+    <div class="col-lg-10">
+      <h3>商品一覧 (全<%= @items.count %>件)</h3>
+      <div class="card-group">
        <% @items.each do |item| %>
-       <td>
-          <%= attachment_image_tag item, :image, size: "150x100", format:"jpeg" %>
-          <%= item.name %>
-          ￥<%= item.price.to_s(:delimited) %>
-       </td>
-       <% end %>   
-     </tr>
-    </table>
-   </div>
+         <div class="col-lg-3">
+           <div class="card border-light h-100">
+             <%= attachment_image_tag item, :image, format:"jpeg", class: "h-100" %>
+             <div class="card-body">
+              <div class="card-title">
+                <%= item.name %>
+              </div>
+              <div class="card-text">
+                ￥<%= item.price.to_s(:delimited) %>
+              </div>
+             </div>
+           </div>
+         </div>
+       <% end %>
+      </div>
+    </div>
   </div>
 </div>
