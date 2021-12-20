@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_12_19_031614) do
 
+
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_031614) do
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_active", default: true
+    t.boolean "is_active", default: true, null: false
     t.string "image_id"
   end
 
