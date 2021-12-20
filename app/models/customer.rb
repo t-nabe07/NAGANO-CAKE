@@ -24,7 +24,6 @@ class Customer < ApplicationRecord
     #super && (is_deleted == false)
   #end
 
-
   # enumの設定
   enum is_deleted: { withdraw: true, active: false}
 
