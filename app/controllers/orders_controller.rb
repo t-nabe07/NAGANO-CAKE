@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    o
   end
 
   def thanx
