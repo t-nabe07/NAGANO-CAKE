@@ -1,0 +1,27 @@
+<div>
+  <span><font size="3">ショッピングカート</font></span>
+  <span><%= link_to "カートを空にする", class: "btn btn-danger" %></span>
+</div>
+
+<div class="table-responsive">
+  <table class='table table-bordered'>
+    <thead>
+      <tr bgcolor="#c0c0c0">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td><%= link_to "削除する" %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
