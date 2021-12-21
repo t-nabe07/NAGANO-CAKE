@@ -40,7 +40,10 @@ class Customer < ApplicationRecord
   # フルネームカナ（nilの場合を除く）
   def full_name_kana
     self.last_name_kana + " " + self.last_name_kana
-  end
+  end 
+  
+  has_many :orders, dependent: :destroy
+  has_many :addresses, dependent: :destroy
 
 
 end
