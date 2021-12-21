@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'customers/edit'
-  get 'customers/show'
+  
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords,], controllers: {
