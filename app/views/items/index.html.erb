@@ -7,20 +7,27 @@
       <h3>商品一覧 (全<%= @items.count %>件)</h3>
       <div class="card-group">
        <% @items.each do |item| %>
+        
          <div class="col-lg-3">
-           <div class="card border-light h-100">
-             <%= attachment_image_tag item, :image, format:"jpeg", class: "h-100" %>
+           <a href="/items/<%= item.id %>" class="card border-light h-100 text-dark">
+            
+             <%= attachment_image_tag item, :image, format:"jpeg", class: "h-50" %>
              <div class="card-body">
               <div class="card-title">
                 <%= item.name %>
               </div>
               <div class="card-text">
-                ￥<%= item.price.to_s(:delimited) %>
+                ￥<%= item.add_tax_sales_price.to_s(:delimited) %>
               </div>
              </div>
-           </div>
+            
+           </a>
          </div>
+        
        <% end %>
+      </div>
+      <div class="md-auto">
+        <%= paginate @items %>
       </div>
     </div>
   </div>
