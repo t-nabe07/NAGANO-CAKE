@@ -1,17 +1,24 @@
 注文情報確認
 
+@cart_items = current_customer.cart_items.all
+<!--カートアイテムの情報をユーザーに確認してもらうために使用します-->
+@total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+<!--合計金額を出す処理です sum_price はモデルで定義したメソッドです-->
+
 支払方法
+<%= @order.payment_method_i18n %>
 
 お届け先
-<p>ご請求金額</p>
-<%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
 <p>お届け先</p>
-<%= @order.address %>
+<%= @order.postcode %>
+<%= @order.address %></br>
+<%= @order.name %>
 
 <!-- ユーザーには注文確定ボタンだけ表示します -->
-<%= form_with model: @order, url: create へのパス, local: true do |f| %>
-  <%= f.hidden_field :name %>
+<%= form_with model: @order, url:orders_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :postcode %>
   <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
   <%= f.hidden_field :total_price, value: @total %>
   <%= f.submit "注文を確定する" %>
 <% end %>
