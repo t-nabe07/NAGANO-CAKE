@@ -19,13 +19,17 @@
            </td>
         </tr>
         <tr>
-          <td>
-            <%= form_with model:@cart_item, url: cart_items_path,local: true, method: :post do |f| %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-              <%= f.submit "カートに入れる", class: "btn btn-success" %>
-            <% end %>
-          </td>
+         <td>
+          <% if @item.is_active == false %>
+           <p>売切れ</p>
+          <% else %>
+          　　<%= form_with model:@cart_item, url: cart_items_path,local: true, method: :post do |f| %>
+             <%= f.hidden_field :item_id, value: @item.id %>
+             <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+             <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          　　<% end %>
+          <% end %>
+         </td>
         </tr>
     </table>
   </div>
