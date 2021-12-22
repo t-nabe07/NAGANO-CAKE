@@ -20,8 +20,12 @@
         </tr>
         <tr>
          <td>
+          <% if @item.is_active == false %>
+           <p>売切れ</p>
+          <% else %>
            <%= select_tag :hoge, options_for_select((1..10).to_a) %>
            <%= link_to "カートに入れる", cart_items_path, class:"btn btn-success" %>
+          <% end %>
          </td>
         
         </tr>
