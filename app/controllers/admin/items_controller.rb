@@ -26,7 +26,6 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @genre = @item.genre.name
-    p @item
   end
 
   private
