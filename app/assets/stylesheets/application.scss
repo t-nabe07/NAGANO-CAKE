@@ -14,3 +14,10 @@
  *= require_self
  */
  @import "bootstrap";
+
+ body, html { font-size: 30px; }
+ @media screen and (min-width: 576px) and (max-width: 768px) { body, html { font-size: 35px; } }
+ @media screen and (min-width: 769px) and (max-width: 992px) { body, html { font-size: 38px; } }
+ @media screen and (min-width: 993px) and (max-width: 1200px) { body, html { font-size: 16px; } }
+ @media screen and (min-width: 1201px) { body, html { font-size: 20px; } }
+
