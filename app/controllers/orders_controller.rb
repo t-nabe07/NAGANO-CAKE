@@ -6,23 +6,40 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.orders.new(order_params)
-    @order.save
+    order = current_customer.orders.new(order_params)
+    order.save
+
+    cart_items = current_customer.cart_items
+    cart_items.each do |cart_item|
+    OrderItem.create(
+      item_id: cart_item.item.id,
+      order_id: order.id,
+      quantity: cart_item.quantity,
+      price: cart_item.subtotal
+    )
+    end
+    cart_items.destroy_all
     redirect_to orders_thanx_path
-    
+
+
   end
-  
+
 
   def index
     @orders = Order.all
-    
+
   end
 
   def show
   end
 
   def confirm
+    @cart_items = current_customer.cart_items
+    # <!--カートに入ってる商品の合計金額-->
+    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
+
     @order = Order.new(order_params)
+    @order.shipping_cost = 800.to_i
     if params[:order][:select_addres] == "0"
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
@@ -33,19 +50,19 @@ class OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
-    
-    
-  
+
+
+
   end
 
   def thanx
-    
+
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postcode, :address, :name)
+    params.require(:order).permit(:payment_method, :postcode, :address, :name, :shipping_cost)
 
   end
 
