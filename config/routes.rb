@@ -20,8 +20,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   get 'about' => 'homes#about'
   resources :items, only: [:index, :show]
 
+  delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
   resources :cart_items, only: [:index, :create, :update, :destroy]
-  get 'cart_items/all_destroy' => 'cart_items#all_destroy'
 
   resource :customers, only: [:show, :edit, :update]
   patch 'customers/withdraw' => 'customers#withdraw'
