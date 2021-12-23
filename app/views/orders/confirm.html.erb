@@ -1,15 +1,49 @@
 注文情報確認
 
-@cart_items = current_customer.cart_items.all
-<!--カートアイテムの情報をユーザーに確認してもらうために使用します-->
-@total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-<!--合計金額を出す処理です sum_price はモデルで定義したメソッドです-->
+<div class="table-responsive">
+  <table class='table table-bordered'>
+    <thead>
+      <tr bgcolor="#c0c0c0">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <% @cart_items.each do |cart_item| %>
+      <tbody>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.add_tax_sales_price.to_s (:delimited) %></td>
+          <td><%= cart_item.quantity.to_i %></td>
+          <td><%= cart_item.subtotal.to_s (:delimited) %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+
+  <table class = "table-responsive">
+    <table class = "table">
+    <tr>
+      <th>送料</th>
+      <th><%= @order.shipping_cost.to_s %></th>
+    </tr>
+    <tr>
+      <th>商品合計</th>
+      <th><%= @total.round.to_s(:delimited) %></th>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <th><%= (@order.shipping_cost + @total).round.to_s(:delimited) %></th>
+    </tr>
+  </table>
 
 支払方法
-<%= @order.payment_method_i18n %>
+<%= @order.payment_method_i18n %></br>
 
 お届け先
-<p>お届け先</p>
 <%= @order.postcode %>
 <%= @order.address %></br>
 <%= @order.name %>
@@ -19,6 +53,8 @@
   <%= f.hidden_field :postcode %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :name %>
+  <%= f.hidden_field :shipping_cost %>
+  <%= f.hidden_field :payment_method %>
   <%= f.hidden_field :total_price, value: @total %>
   <%= f.submit "注文を確定する" %>
 <% end %>
