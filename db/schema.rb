@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_12_20_160610) do
 
+
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
