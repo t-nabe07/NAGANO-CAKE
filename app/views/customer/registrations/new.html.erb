@@ -12,9 +12,15 @@
       <%= f.label :"名前", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 mb-3 mb-md-0 col-md-4 col-lg-3">
         <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "姓" %>
+        <% if @customer.errors.include?(:last_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:last_name).first %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "名" %>
+        <% if @customer.errors.include?(:first_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:first_name).first %>
+        <% end %>
       </div>
     </div>
 
@@ -22,9 +28,15 @@
       <%= f.label :"フリガナ", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 mb-3 mb-md-0 col-lg-3 ">
         <%= f.text_field :last_name_kana, autofocus: true, class: "form-control", placeholder: "セイ" %>
+        <% if @customer.errors.include?(:last_name_kana) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:last_name_kana).first %>
+        <% end %>
       </div>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.text_field :first_name_kana, autofocus: true, class: "form-control mr-2", placeholder: "メイ" %>
+        <% if @customer.errors.include?(:first_name_kana) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:first_name_kana).first %>
+        <% end %>
       </div>
     </div>
 
@@ -32,6 +44,9 @@
       <%= f.label :メールアドレス, class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+        <% if @customer.errors.include?(:email) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
+        <% end %>
       </div>
     </div>
 
@@ -39,6 +54,9 @@
       <%= f.label :"郵便番号(ハイフン無)", autofocus: true, class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.text_field :postcode, class: "form-control" , placeholder: "ハイフン無" %>
+        <% if @customer.errors.include?(:postcode) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:postcode).first %>
+        <% end %>
       </div>
     </div>
 
@@ -46,6 +64,9 @@
       <%= f.label :"住所", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-6">
         <%= f.text_field :address, autofocus: true, class: "form-control", placeholder: "住所" %>
+        <% if @customer.errors.include?(:address) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
+        <% end %>
       </div>
     </div>
 
@@ -53,6 +74,9 @@
       <%= f.label :"電話番号", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.text_field :phone_num, class: "form-control", placeholder: "電話番号(ハイフン無し)" %>
+        <% if @customer.errors.include?(:phone_num) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:phone_num).first %>
+        <% end %>
       </div>
     </div>
 
@@ -60,6 +84,9 @@
       <%= f.label :"パスワード(6文字以上)", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(6文字以上)" %>
+        <% if @customer.errors.include?(:password) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
+        <% end %>
       </div>
     </div>
 
@@ -67,6 +94,9 @@
       <%= f.label :"パスワード(確認用)", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
       <div class="col-12 col-md-4 col-lg-3">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(確認用)" %>
+        <% if @customer.errors.include?(:password) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
+        <% end %>
       </div>
     </div>
 

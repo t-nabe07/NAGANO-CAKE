@@ -2,8 +2,12 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+    else
+      @addresses = Address.all
+      render :index
+    end
   end
 
   def index
@@ -19,7 +23,7 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     @address.update(address_params)
     redirect_to addresses_path
-    
+
   end
 
   def destroy

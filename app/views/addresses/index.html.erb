@@ -1,35 +1,66 @@
-配送先登録/一覧
-<%= form_with model: @address, local:true do |f| %>
-<div>
-  郵便番号(ハイフンなし)
-  <%= f.text_field :postcode %>
-</div>
-<div>
-  住所
-  <%= f.text_field :address %>
-</div>
-<div>
-  宛名
-  <%= f.text_field :name %>
-  <%= f.submit '新規登録' %>
-</div>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-light my-3 px-4">配送先登録 / 一覧</h4>
+  </div>
+  </br>
 
-<table class="table">
-  <thead>
-    <td>郵便番号</td>
-    <td>住所</td>
-    <td>宛名</td>
-  </thead>
-  <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.postcode %></td>
-        <td><%= address.address %></td>
-        <td><%= address.name %></td>
-        <td><%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-success" %></td>
-        <td><%= link_to '削除する', address_path(address), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </br>
+  <%= form_with model: @address, local:true do |f| %>
+    <div class="form-group row">
+      <%= f.label :"郵便番号(ハイフンなし)", class: "col-12 col-md-3 col-lg-3 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :postcode, class: "form-control", placeholder: "ハイフン無" %>
+        <% if @address.errors.include?(:postcode) %>
+          <p style="color: red;"><%= @address.errors.full_messages_for(:postcode).first %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%=f.label :"住所", class: "col-12 col-md-3 col-lg-3 col-form-label" %>
+      <div class="col-12 col-md-6">
+        <%= f.text_field :address, autofocus: true, class: "form-control", placeholder: "住所" %>
+        <% if @address.errors.include?(:address) %>
+          <p style="color: red;"><%= @address.errors.full_messages_for(:address).first %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :"宛名", class: "col-12 col-md-3 col-lg-3 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "宛名" %>
+        <% if @address.errors.include?(:name) %>
+          <p style="color: red;"><%= @address.errors.full_messages_for(:name).first %>
+        <% end %>
+      </div class="col-12 col-md-4 col-lg-3">
+        <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
+      </div>
+    </div>
+  <% end %>
+
+  </br>
+  <div class=" col-md-10">
+    <table border="1" >
+      <thead>
+        <td width="200" height="50" bgcolor="silver">郵便番号</td>
+        <td width="200" bgcolor="silver">住所</td>
+        <td width="200" bgcolor="silver">宛名</td>
+        <td width="150" bgcolor="silver"></td>
+      </thead>
+      <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td width ="200" height="50"><%= address.postcode %></td>
+            <td width="200"><%= address.address %></td>
+            <td width="200"><%= address.name %></td>
+            <td>
+              <%= link_to '編集する', edit_address_path(address), class: "btn btn-sm btn-success" %>
+              <%= link_to '削除する', address_path(address), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
