@@ -9,25 +9,25 @@
   <div class="col-lg-5">
     <table>
         <tr>
-         <td><h5><b><%= @item.name %></b></h5></td>
+         <td><h3><b><%= @item.name %></b></h3></td>
         </tr>
         <tr>
-         <td><%= @item.introduction %></td>
+         <td style="font-size : 20px;" height="50"><%= @item.introduction %></td>
         <tr>
-         <td>
-           <h5>¥<%= @item.add_tax_sales_price.to_s (:delimited) %><span>（税込）</span></h5>
-           </td>
+         <td style="font-size : 25px;" height="50">
+           ¥<%= @item.add_tax_sales_price.to_s (:delimited) %>（税込）
+         </td>
         </tr>
         <tr>
-         <td>
+         <td height="80">
           <% if @item.is_active == false %>
            <p>売切れ</p>
           <% else %>
-        　　<%= form_with model:@cart_item, url: cart_items_path,local: true, method: :post do |f| %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-            <%= f.submit "カートに入れる", class: "btn btn-success" %>
-        　　<% end %>
+            <%= form_with model:@cart_item, url: cart_items_path,local: true, method: :post do |f| %>
+             <%= f.hidden_field :item_id, value: @item.id %>
+             <%= f.select :quantity, options_for_select((1..10).to_a) %>
+             <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
           <% end %>
          </td>
         </tr>

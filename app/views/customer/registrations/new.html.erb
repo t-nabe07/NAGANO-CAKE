@@ -1,64 +1,115 @@
-<div class="row">
-  <div class="col-xs-offset-1 col-xs-11">
+<div class="container">
+  <br>
+  <div class="row">
+    <h2 class="col-xs-offset-1">新規会員登録</h2>
+  </div>
+  <br>
 
-  <h2 class="col-xs-offset-1">新規会員登録</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "customer/shared/error_messages", resource: resource %>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "customer/shared/error_messages", resource: resource %>
-
-      <div class="field form-group col-xs-12">
-        <%= f.label :"名前", class: "col-sm-2 control-label" %>
-        <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :last_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
-        <%= f.label :"(名)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
+    <div class="form-group row">
+      <%= f.label :"名前", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 mb-3 mb-md-0 col-md-4 col-lg-3">
+        <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "姓" %>
+        <% if @customer.errors.include?(:last_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:last_name).first %>
+        <% end %>
       </div>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "名" %>
+        <% if @customer.errors.include?(:first_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:first_name).first %>
+        <% end %>
+      </div>
+    </div>
 
-      <div class="field form-group col-xs-12">
-        <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
-        <%= f.label :"(セイ)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :last_name_kana, autofocus: true, class: "col-sm-3 form-control-static name" %>
-        <%= f.label :"(メイ)", class: "col-sm-1 control-label" %>
-        <%= f.text_field :first_name_kana, autofocus: true, class: "col-sm-3 form-control-static name" %>
+    <div class="form-group row">
+      <%= f.label :"フリガナ", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 mb-3 mb-md-0 col-lg-3 ">
+        <%= f.text_field :last_name_kana, autofocus: true, class: "form-control", placeholder: "セイ" %>
+        <% if @customer.errors.include?(:last_name_kana) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:last_name_kana).first %>
+        <% end %>
       </div>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :first_name_kana, autofocus: true, class: "form-control mr-2", placeholder: "メイ" %>
+        <% if @customer.errors.include?(:first_name_kana) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:first_name_kana).first %>
+        <% end %>
+      </div>
+    </div>
 
-      <div class="field form-group col-xs-9">
-        <%= f.label :メールアドレス, class: "col-sm-3 control-label" %>
-        <%= f.email_field :email, class: "col-sm-6 form-control-static" %>
+    <div class="form-group row">
+      <%= f.label :メールアドレス, class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス" %>
+        <% if @customer.errors.include?(:email) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="form-group col-xs-9">
-        <%= f.label :"郵便番号", autofocus: true, class: "col-sm-3 control-label" %>
-        <%= f.text_field :postcode, class: "col-sm-4 form-control-static postal_code" %>
+    <div class="form-group row">
+      <%= f.label :"郵便番号(ハイフン無)", autofocus: true, class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :postcode, class: "form-control" , placeholder: "ハイフン無" %>
+        <% if @customer.errors.include?(:postcode) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:postcode).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="form-group col-xs-9">
-        <%= f.label :"住所", class: "col-sm-3 control-label" %>
-        <%= f.text_field :address, autofocus: true, class: "col-sm-8 form-control-static address"  %>
+    <div class="form-group row">
+      <%= f.label :"住所", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-6">
+        <%= f.text_field :address, autofocus: true, class: "form-control", placeholder: "住所" %>
+        <% if @customer.errors.include?(:address) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="form-group col-xs-9">
-        <%= f.label :"電話番号", class: "col-sm-3 control-label" %>
-        <%= f.text_field :phone_num, class: "col-sm-3 form-control-static" %>
+    <div class="form-group row">
+      <%= f.label :"電話番号", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.text_field :phone_num, class: "form-control", placeholder: "電話番号(ハイフン無し)" %>
+        <% if @customer.errors.include?(:phone_num) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:phone_num).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="field form-group col-xs-9">
-        <%= f.label :"パスワード(6文字以上)", class: "col-sm-3 control-label" %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+    <div class="form-group row">
+      <%= f.label :"パスワード(6文字以上)", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(6文字以上)" %>
+        <% if @customer.errors.include?(:password) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="field form-group col-xs-9">
-        <%= f.label :"パスワード(確認用)", class: "col-sm-3 control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+    <div class="form-group row">
+      <%= f.label :"パスワード(確認用)", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+      <div class="col-12 col-md-4 col-lg-3">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(確認用)" %>
+        <% if @customer.errors.include?(:password) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
+        <% end %>
       </div>
+    </div>
 
-      <div class="actions col-xs-9">
-        <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-7' %>
-      </div>
-    <% end %>
-      <div class="col-xs-9">
-        <h2 class="head-line title_h2 ">既に登録済みの方</h2>
-        <p class="new-link"><%= render "customer/shared/links" %>からログインしてください。</p>
-      </div>
+    <br>
+    <div class="actions row">
+      <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-7' %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <br>
+    <br>
+    <p class="bg-light my-3 px-2">既に登録済みの方</p>
+    <p class="bg-light my-3 px-2"><%= render "customer/shared/links" %>からログインしてください。</p>
   </div>
 </div>
