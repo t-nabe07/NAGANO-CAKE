@@ -8,3 +8,15 @@ ja:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+        status:
+          wating_for_deposit: "入金待ち"
+          payment_confirmation: "入金確認"
+          be_making: "制作中"
+          ready_to_ship: "発送準備中"
+          has_been_shiped: "発送済み"
+      order_item:
+        making_status:
+          impossible: "制作不可"
+          wating_for_making: "制作待ち"
+          be_making: "制作中"
+          has_been_shiped: "制作完了"
