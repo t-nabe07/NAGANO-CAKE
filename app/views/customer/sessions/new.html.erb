@@ -1,25 +1,36 @@
 <div class="container">
-<h2>ログイン</h2>
-
-<br>
-<h4>会員の方はこちらからログイン</h4>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  
+  <br>
+  <div class="row">
+    <h2>ログイン</h2>
   </div>
+  <br>
+  
+  <h4>会員の方はこちらからログイン</h4><br>
+  
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :"メールアドレス", class: "col-12 col-md-3 col-lg-2 col-form-label" %><br />
+        <div class="col-12 col-md-4 col-lg-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+      </div>
 
- <br>
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
+      <div class="form-group row">
+        <%= f.label :"パスワード", class: "col-12 col-md-3 col-lg-2 col-form-label" %>
+        <div class="col-12 col-md-4 col-lg-3">
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+      </div>
 
-<h4>会員登録がお済みでない方</h4>
-<p><%= render "customer/shared/links" %>から新規登録を行なってください。</p>
+      <br>
+      <div class="actions">
+        <%= f.submit "ログイン",class: 'btn btn-success btn-lg col-xs-7' %>
+      </div>
+    <% end %>
+
+  <br>
+  <h4>会員登録がお済みでない方</h4>
+  <p><%= render "customer/shared/links" %>から新規登録を行なってください。</p>
 </div>
