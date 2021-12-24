@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def create
     order = current_customer.orders.new(order_params)
     order.save
-    
+
     cart_items = current_customer.cart_items
     cart_items.each do |cart_item|
     OrderItem.create(
@@ -20,17 +20,23 @@ class OrdersController < ApplicationController
     end
     cart_items.destroy_all
     redirect_to orders_thanx_path
-  
+
 
   end
 
 
   def index
-    @orders = Order.all
-
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
+    @total_payment = 0
+    @order_items.each do |order_item|
+      @total_payment += order_item.item.add_tax_sales_price * order_item.quantity
+    end
+    @amount_billed = @total_payment + @order.shipping_cost
   end
 
   def confirm
@@ -62,7 +68,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postcode, :address, :name, :shipping_cost)
+    params.require(:order).permit(:payment_method, :postcode, :address, :name, :shipping_cost, :total_payment)
 
   end
 
