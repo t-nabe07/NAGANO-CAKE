@@ -7,7 +7,7 @@ class AddressesController < ApplicationController
   end
 
   def index
-    @addresses = Address.all
+    @addresses = current_customer.addresses
     @address = Address.new
   end
 
