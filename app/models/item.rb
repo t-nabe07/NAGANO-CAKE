@@ -5,8 +5,8 @@ class Item < ApplicationRecord
 
  has_many :cart_items, dependent: :destroy
  has_many :order_items, dependent: :destroy
- 
- #商品の税込価格
+ has_many :orders
+
  def add_tax_sales_price
   (self.price * 1.10).round
  end
