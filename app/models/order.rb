@@ -7,6 +7,4 @@ class Order < ApplicationRecord
   enum status: { wating_for_deposit:0, payment_confirmation:1, be_making:2, ready_to_ship:3, has_been_shiped:4}
 
 
-  belongs_to :item
-  attachment :image
 end
