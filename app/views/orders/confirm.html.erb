@@ -97,5 +97,38 @@
 
 </div>
 
+  <table class = "table-responsive">
+    <table class = "table">
+    <tr>
+      <th>送料</th>
+      <th><%= @order.shipping_cost.to_s %></th>
+    </tr>
+    <tr>
+      <th>商品合計</th>
+      <th><%= @total.round.to_s(:delimited) %></th>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <th><%= (@order.shipping_cost + @total).round.to_s(:delimited) %></th>
+    </tr>
+  </table>
 
+支払方法
+<%= @order.payment_method_i18n %></br>
+
+お届け先
+<%= @order.postcode %>
+<%= @order.address %></br>
+<%= @order.name %>
+
+<!-- ユーザーには注文確定ボタンだけ表示します -->
+<%= form_with model: @order, url:orders_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :postcode %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :shipping_cost %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :total_payment, value: @total %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
 
