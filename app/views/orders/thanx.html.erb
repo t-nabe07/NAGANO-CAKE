@@ -3,3 +3,10 @@
     <h1>ご注文ありがとうございました！</h1>
   </div>
 </div>
+
+<div class = 'd-flex align-items-center' >
+  <div class = 'mx-auto'>
+    <%= link_to '商品一覧', items_path(@item), class: 'btn btn-success' %>
+    <%= link_to '注文一覧', orders_path(@order), class: 'btn btn-danger' %>
+  </div>
+</div>
