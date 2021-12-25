@@ -23,3 +23,104 @@
  @media screen and (min-width: 769px) and (max-width: 992px) { body, html { font-size: 15px; } }
  @media screen and (min-width: 993px) and (max-width: 1200px) { body, html { font-size: 15px; } }
  @media screen and (min-width: 1201px) { body, html { font-size: 15px; } }
+
+header {
+ background-color: #f5f5dc;
+}
+
+footer {
+ background-color: #f5f5dc;
+}
+
+// btn-successの色変更
+.btn-success{
+ background-color: #FFFAF0;
+ color: #B38867;
+ border-color: #DDBC95;
+}
+
+// btn-successの色変更(クリック中）
+.btn-success:not(:disabled):not(.disabled):active{
+  color: #FFFAF0;
+  background-color: #CD853F;
+  border-color: #FFDAB9;
+}
+
+// btn-successの色変更（マウスが乗っている時）
+.btn-success:hover{
+ color: #FFFAF0;
+ background-color: #CD853F;
+ border-color: #FFDAB9;
+}
+
+
+// btn-primaryの色変更
+.btn-primary{
+ background-color: #F5F5F5;
+ color: #696969;
+ border-color: #C0C0C0;
+}
+
+// btn-primaryの色変更(クリック中）
+.btn-primary:not(:disabled):not(.disabled):active{
+ color: #F5F5F5;
+ background-color: #626D71;
+ border-color: #A9A9A9;
+}
+
+// btn-primaryの色変更（マウスが乗っている時）
+.btn-primary:hover{
+ color: #F5F5F5;
+ background-color: #626D71;
+ border-color: #A9A9A9;
+}
+
+
+// btn-infoの色変更
+.btn-info{
+ color: #F5F5F5;
+ background-color: #626D71;
+ border-color: #A9A9A9;
+}
+
+// btn-infoの色変更(クリック中）
+.btn-info:not(:disabled):not(.disabled):active{
+ color: #F5F5F5;
+ background-color: #626D71;
+ border-color: #A9A9A9;
+}
+
+// btn-infoの色変更（マウスが乗っている時）
+.btn-info:hover{
+ background-color: #F5F5F5;
+ color: #696969;
+ border-color: #C0C0C0;
+}
+
+
+// btn-dangerの色変更
+.btn-danger{
+ color: #FFFAF0;
+ background-color: #CD853F;
+ border-color: #FFDAB9;
+}
+
+// btn-dangerの色変更(クリック中）
+.btn-danger:not(:disabled):not(.disabled):active{
+ background-color: #FFFAF0;
+ color: #B38867;
+ border-color: #DDBC95;
+}
+
+// btn-dangerの色変更（マウスが乗っている時）
+.btn-danger:hover{
+ background-color: #FFFAF0;
+ color: #B38867;
+ border-color: #DDBC95;
+}
+
+
+// cardの枠線の色
+.border-warm{
+ border-color: #DDBC95;
+}

@@ -18,8 +18,7 @@ class Admin::OrdersController < ApplicationController
       making_status = OrderItem.where(order_id: @order.id)
       making_status.update(making_status: "wating_for_making")
       redirect_to request.referer
-    elsif
-
+    else
       redirect_to request.referer
     end
   end
