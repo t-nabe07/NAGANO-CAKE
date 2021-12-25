@@ -2,7 +2,6 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.page(params[:page]).per(10)
-
   end
 
   def show
@@ -14,7 +13,14 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to request.referer
+    p @order
+    if @order.status == "payment_confirmation"
+      making_status = OrderItem.where(order_id: @order.id)
+      making_status.update(making_status: "wating_for_making")
+      redirect_to request.referer
+    else
+      redirect_to request.referer
+    end
   end
 
   def index_customer
