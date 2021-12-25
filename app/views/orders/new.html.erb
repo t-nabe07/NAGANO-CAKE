@@ -8,12 +8,12 @@
      </div>
 
       <div class="px-5">
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), required: true %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
       </div>
 
       <div class="px-5">
-      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1), required: true %>
       <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
       </div>
 
@@ -21,7 +21,7 @@
       <strong>お届け先</strong>
      </div>
       <div class="px-5 py-2">
-        <%= f.radio_button :select_addres, 0 %>
+        <%= f.radio_button :select_addres, 0 , required: true %>
         <%= f.label :select_addres, "ご自身の住所" %>
          <div class="px-5">
           〒<%= @customer.postcode %>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="px-5 py-2">
-        <%= f.radio_button :select_addres, 1 %>
+        <%= f.radio_button :select_addres, 1 , required: true %>
         <%= f.label :select_addres, "登録住所から選択" %>
          <div class="px-5">
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
@@ -40,7 +40,7 @@
 
 
       <div class="px-5 py-2">
-        <%= f.radio_button :select_addres, 2 %>
+        <%= f.radio_button :select_addres, 2 , required: true %>
         <%= f.label :select_addres, "新しいお届け先" %>
         <div class="px-5">
          
