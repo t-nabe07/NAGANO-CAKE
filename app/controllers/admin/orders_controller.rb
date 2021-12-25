@@ -25,7 +25,7 @@ class Admin::OrdersController < ApplicationController
 
   def index_customer
     @customer_orders = Order.where(customer_id: params[:id]).page(params[:page]).per(10)
-    @customer_name = Order.find_by(customer_id: params[:id]).name
+    @customer_name = Order.find_by(customer_id: params[:id]).customer.full_name
   end
 
 

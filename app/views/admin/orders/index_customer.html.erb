@@ -14,7 +14,7 @@
         <% @customer_orders.each do |customer_order| %>
         <tr>
           <td><u><%= link_to customer_order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(customer_order.id), class: "text-dark" %></u></td>
-          <td><u><%= link_to customer_order.name, admin_customer_path(customer_order.id), class: "text-dark" %></u></td>
+          <td><u><%= link_to customer_order.customer.full_name, admin_customer_path(customer_order.customer.id), class: "text-dark" %></u></td>
           <td><%= customer_order.order_items.sum(:quantity) %></td>
           <td><%= customer_order.status_i18n %></td>
         </tr>
