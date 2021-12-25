@@ -10,5 +10,10 @@ class Order < ApplicationRecord
     shipping_cost + total_payment
   end
   
+  validates :postcode, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :payment_method, presence: true
+
 end
 
