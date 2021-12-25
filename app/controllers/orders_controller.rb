@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-    
   end
 
   def show
@@ -63,7 +62,6 @@ class OrdersController < ApplicationController
   end
 
   def thanx
-
   end
 
   private
