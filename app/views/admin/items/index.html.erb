@@ -1,0 +1,48 @@
+<div class='container'>
+  <div class='row'>
+   <h4 class = "bg-light my-3 px-4">商品一覧</h4>
+   </div>
+   
+   <!--新規登録ボタン-->
+   <div align="right">
+    <%= link_to new_admin_item_path do %>
+     <button class="btn rounded-circle shadow" >＋</button>
+    <% end %>
+   </div>
+   
+   <!--商品一覧-->
+    <table class="table table-hover table-inverse">
+      <thead class="thead-light">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+         <tr>
+           <td><%= item.id %></td>
+           <td><u><%= link_to item.name, admin_item_path(item), class: "text-dark" %></u></td>
+           <td><%= item.price.to_s(:delimited) %></td>
+           <td><%= item.genre.name %></td>
+           <td>
+            <% if item.is_active == true %>
+             <strong class="text-success">販売中</strong>
+            <% else %>
+             <strong class="text-secondary">販売停止中</strong>
+            <% end %>
+           </td>
+         </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

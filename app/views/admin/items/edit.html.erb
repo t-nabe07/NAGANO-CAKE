@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <h4 class ="bg-light my-3 px-4">商品編集</h4>
+    </div>
+
+      <%= form_with model:@item, url:admin_item_path(@item), local:true do |f| %>
+        <table align="center" class="my-5 px-5">
+         <tbody>
+          <tr>
+            <td>商品画像</td>
+            <td class="px-3 py-2"><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <td>商品名</td>
+            <td class="px-3 py-2"><%= f.text_field :name, placeholder: "商品名", size: "40x1" %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td class="px-3 py-2"><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "40x6 " %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td class="px-3 py-2"><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+          </tr>
+          <tr>
+            <td>税抜価格</td>
+            <td class="px-3 py-2"><%= f.text_area :price, placeholder: "1000", size: "40x1" %></td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td class="px-3 py-2">
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, '販売中', value: true %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, '販売停止中', value: false %>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td  align="center"><%= f.submit "変更を保存", class: 'btn btn-success' %></td>
+          </tr>
+         </tbody>
+        
+        </table>
+        
+      <% end %>
+  </div>
+</div>
+

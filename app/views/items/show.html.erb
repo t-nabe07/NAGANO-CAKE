@@ -1,0 +1,37 @@
+<div class="container">
+ <div class="row">
+　<div class="col-lg-3">
+    
+  </div>
+  <div class="col-lg-3 my-5 py-5">
+    <%= attachment_image_tag @item, :image, size: "200x150", format:'jpeg', class:"img-fluid" %>
+  </div>
+  <div class="col-lg-5 my-5 py-5">
+    <table>
+        <tr>
+         <td><h3><b><%= @item.name %></b></h3></td>
+        </tr>
+        <tr>
+         <td style="font-size : 20px;" height="50"><%= @item.introduction %></td>
+        <tr>
+         <td style="font-size : 25px;" height="50">
+           ¥<%= @item.add_tax_sales_price.to_s (:delimited) %>（税込）
+         </td>
+        </tr>
+        <tr>
+         <td height="80">
+          <% if @item.is_active == false %>
+           <p>売切れ</p>
+          <% else %>
+            <%= form_with model:@cart_item, url: cart_items_path,local: true, method: :post do |f| %>
+             <%= f.hidden_field :item_id, value: @item.id %>
+             <%= f.select :quantity, options_for_select((1..10).to_a) %>
+             <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+          <% end %>
+         </td>
+        </tr>
+    </table>
+  </div>
+ </div>
+</div>

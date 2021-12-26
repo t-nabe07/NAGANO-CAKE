@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h4 class="bg-light my-3 px-4">ジャンル編集</h4>
+    </div>
+    
+    <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
+    <table class="my-5 mx-5">
+      <tr>
+        <th>
+          <p>ジャンル名</p>
+          <th class="px-5"><%= f.text_field :name, placeholder: "ジャンル名" %></th>
+          <th class="px-"><%= f.submit'変更を保存', class: "btn btn-success" %></th>
+        </th>
+      </tr>
+    </table>
+    <% end %>
+      
+  </div>
+</div>
+
+
+
+
